@@ -13,9 +13,15 @@ Este é um projeto de exemplo chamado TarefasApp, que implementa um sistema de g
 
 - ASP.NET Core Web API
 - Entity Framework Core
+- Unit Of Work
 - XUnit (Framework de Testes)
 - Domain-Driven Design (DDD)
 - Test-Driven Development (TDD)
+- CQRS
+- SQL Server
+- MongoDB
+- RabbitMQ
+- Identity (JWT)
 
 ## Pré-requisitos
 
