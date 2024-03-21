@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using TarefasApp.Application.Commands;
+using TarefasApp.Application.Dtos;
+using TarefasApp.Application.Interfaces;
 
 namespace TarefasApp.API.Controller
 {
@@ -6,43 +9,67 @@ namespace TarefasApp.API.Controller
     [Route("api/[controller]/[action]")]
     public class TarefasController : ControllerBase
     {
+        private readonly ITarefaAppService _service;
+
+        public TarefasController(ITarefaAppService service)
+        {
+            _service = service;
+        }
+
         /// <summary>
         /// Realiza o post
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> Post()
+        [ProducesResponseType(typeof(TarefaDto), 201)]
+        public async Task<IActionResult> Post(TarefaCreateCommand command)
         {
-            await Task.CompletedTask;
-            return Ok();
+            var dto = await _service.Create(command);
+            return StatusCode(201, dto);
         }
 
         /// <summary>
         /// Realiza Put
         /// </summary>
         [HttpPut]
-        public async Task<IActionResult> Put()
+        [ProducesResponseType(typeof(TarefaDto), 200)]
+        public async Task<IActionResult> Put(TarefaUpdateCommand command)
         {
-            await Task.CompletedTask;
-            return Ok();
+            var dto = await _service.Update(command);
+            return StatusCode(200, dto);
         }
 
         /// <summary>
         /// Realiza Delete
         /// </summary>
-        [HttpDelete]
-        public async Task<IActionResult> Delete()
+        [HttpDelete("{id}")]
+        [ProducesResponseType(typeof(TarefaDto), 200)]
+        public async Task<IActionResult> Delete(Guid id)
         {
-            await Task.CompletedTask;
-            return Ok();
+            var command = new TarefaDeleteCommand { Id = id };
+            var dto = await _service.Delete(command);
+
+            return StatusCode(200, dto);
         }
 
         /// <summary>
-        /// Realiza Get
+        /// Realiza GetAll
         /// </summary>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        [ProducesResponseType(typeof(List<TarefaDto>), 200)]
+        public async Task<IActionResult> GetAll()
         {
-            await Task.CompletedTask;
+            var dtos = await _service.GetAll();
+            return StatusCode(200, dtos);
+        }
+
+        /// <summary>
+        /// Realiza GetById
+        /// </summary>
+        [HttpGet("{id}")]
+        [ProducesResponseType(typeof(TarefaDto), 200)]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var dto = await _service.GetById(id);
             return Ok();
         }
     }
