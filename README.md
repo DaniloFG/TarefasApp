@@ -1,4 +1,4 @@
-# TarefasApp
+# App de tarefas
 
 Este é um projeto de exemplo chamado TarefasApp, que implementa um sistema de gerenciamento de tarefas usando os princípios de Domain-Driven Design (DDD), Test-Driven Development (TDD), uma API ASP.NET, Entity Framework e testes com XUnit.
 
