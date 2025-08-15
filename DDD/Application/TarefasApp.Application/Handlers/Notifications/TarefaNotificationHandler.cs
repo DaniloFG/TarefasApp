@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 using MediatR;
 using System.Threading;
+using AutoMapper;
 using TarefasApp.Infra.Storage.Persistence;
 using TarefasApp.Infra.Storage.Collections;
-using AutoMapper;
 
 namespace TarefasApp.Application.Handlers.Notifications
 {
@@ -23,7 +23,7 @@ namespace TarefasApp.Application.Handlers.Notifications
             switch (notification.Action)
             {
                 case TarefaNotificationAction.TarefaCriada:
-                    _tarefaPersistence.Add(_mapper.Map<TarefaCollection>(notification.Tarefa));
+                    _tarefaPersistence.Insert(_mapper.Map<TarefaCollection>(notification.Tarefa));
                     break;
 
                 case TarefaNotificationAction.TarefaAlterada:

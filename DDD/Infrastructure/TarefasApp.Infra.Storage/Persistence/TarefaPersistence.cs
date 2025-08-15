@@ -25,7 +25,7 @@ namespace TarefasApp.Infra.Storage.Persistence
         public async Task Update(TarefaCollection tarefa)
         {
             var filter = Builders<TarefaCollection>.Filter.Eq(t => t.Id, tarefa.Id);
-            await _mongoDbContext.Tarefa.ReplaceOneAsync(filter, tarefa);
+            await _mongoDbContext.TarefaCollection.ReplaceOneAsync(filter, tarefa);
         }
 
         public async Task Delete(TarefaCollection tarefa)
@@ -43,7 +43,7 @@ namespace TarefasApp.Infra.Storage.Persistence
 
         public async Task<TarefaCollection>? Find(Guid id)
         {
-            var filter = Builders<TarefaCollection>.Filter.Where(t => t.Id, id);
+            var filter = Builders<TarefaCollection>.Filter.Where(t => t.Id == id);
             var result = await _mongoDbContext.TarefaCollection.FindAsync(filter);
             return result.FirstOrDefault();
         }

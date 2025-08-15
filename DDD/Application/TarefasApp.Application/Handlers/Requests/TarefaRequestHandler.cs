@@ -7,6 +7,10 @@ using System.Threading;
 using AutoMapper;
 using TarefasApp.Domain.Interfaces.Services;
 using TarefasApp.Domain.Entities;
+using TarefasApp.Infra.Messages.Producers;
+using TarefasApp.Infra.Messages.Models;
+using System;
+using Newtonsoft.Json;
 
 namespace TarefasApp.Application.Handlers.Requests
 {
@@ -18,12 +22,14 @@ namespace TarefasApp.Application.Handlers.Requests
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
         private readonly ITarefaDomainService _tarefaDomainService;
+        private readonly MessageProducer _messageProducer;
 
-        public TarefaRequestHandler(IMediator mediator, IMapper mapper, ITarefaDomainService tarefaDomainService)
+        public TarefaRequestHandler(IMediator mediator, IMapper mapper, ITarefaDomainService tarefaDomainService, MessageProducer messageProducer)
         {
             _mediator = mediator;
             _mapper = mapper;
             _tarefaDomainService = tarefaDomainService;
+            _messageProducer = messageProducer;
         }
 
         public async Task<TarefaDto> Handle(TarefaCreateCommand request, CancellationToken cancellationToken)
@@ -40,6 +46,13 @@ namespace TarefasApp.Application.Handlers.Requests
             };
 
             await _mediator.Publish(tarefaNotification);
+
+            _messageProducer.SendMessage(new EmailMessageModel
+            {
+                To = "danilofgama@gmail.com",
+                Subject = $"Nova tarefa criada com sucesso em {DateTime.Now.ToString("dd/MM/yyyy HH:mm")}",
+                Body = JsonConvert.SerializeObject(tarefaDto, Formatting.Indented)
+            });
 
             return tarefaDto;
         }

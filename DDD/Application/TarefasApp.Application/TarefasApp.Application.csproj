@@ -16,4 +16,8 @@
     <PackageReference Include="AutoMapper" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\TarefasApp.Infra.Messages\TarefasApp.Infra.Messages.csproj" />
+  </ItemGroup>
+
 </Project>

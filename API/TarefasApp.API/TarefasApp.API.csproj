@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\DDD\Infrastructure\TarefasApp.Infra.Data\TarefasApp.Infra.Data.csproj" />
     <ProjectReference Include="..\..\DDD\Infrastructure\TarefasApp.Infra.Storage\TarefasApp.Infra.Storage.csproj" />
     <ProjectReference Include="..\..\DDD\Domain\TarefasApp.Domain\TarefasApp.Domain.csproj" />
+    <ProjectReference Include="..\..\DDD\Infrastructure\TarefasApp.Infra.Messages\TarefasApp.Infra.Messages.csproj" />
   </ItemGroup>
 
 </Project>

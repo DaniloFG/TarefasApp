@@ -1,9 +1,4 @@
 using MongoDB.Driver;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TarefasApp.Infra.Storage.Settings;
 using TarefasApp.Infra.Storage.Collections;
 
@@ -42,7 +37,7 @@ namespace TarefasApp.Infra.Storage.Contexts
         }
 
         //Mapeamento das collections do banco
-        public IMongoCollection<TarefaCollection> Tarefa => _mongoDatabase.GetCollection<TarefaCollection>("Tarefa");
+        public IMongoCollection<TarefaCollection> TarefaCollection => _mongoDatabase.GetCollection<TarefaCollection>("Tarefa");
     }
 }
 

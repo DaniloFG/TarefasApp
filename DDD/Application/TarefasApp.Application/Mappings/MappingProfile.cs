@@ -1,9 +1,5 @@
 using AutoMapper;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TarefasApp.Application.Commands;
 using TarefasApp.Application.Dtos;
 using TarefasApp.Domain.Entities;

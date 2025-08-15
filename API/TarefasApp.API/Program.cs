@@ -5,6 +5,7 @@ using TarefasApp.Infra.Storage.Extensions;
 using TarefasApp.Domain.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using TarefasApp.Infra.Messages.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddDomainServices();
 builder.Services.AddDataContext(builder.Configuration);
 builder.Services.AddMongoDb(builder.Configuration);
+builder.Services.AddRabbitMQ(builder.Configuration);
 
 var app = builder.Build();
 
