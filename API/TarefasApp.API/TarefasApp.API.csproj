@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>false</ImplicitUsings>
+    <InvariantGlobalization>false</InvariantGlobalization>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\DDD\Application\TarefasApp.Application\TarefasApp.Application.csproj" />
+    <ProjectReference Include="..\..\DDD\Infrastructure\TarefasApp.Infra.Data\TarefasApp.Infra.Data.csproj" />
+    <ProjectReference Include="..\..\DDD\Infrastructure\TarefasApp.Infra.Storage\TarefasApp.Infra.Storage.csproj" />
+    <ProjectReference Include="..\..\DDD\Domain\TarefasApp.Domain\TarefasApp.Domain.csproj" />
+    <ProjectReference Include="..\..\DDD\Infrastructure\TarefasApp.Infra.Messages\TarefasApp.Infra.Messages.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>false</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\TarefasApp.Domain\TarefasApp.Domain.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\TarefasApp.Infra.Storage\TarefasApp.Infra.Storage.csproj" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\TarefasApp.Infra.Messages\TarefasApp.Infra.Messages.csproj" />
+  </ItemGroup>
+
+</Project>
